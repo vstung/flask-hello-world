@@ -3,6 +3,7 @@
 from flask import Flask
 import os
 import json
+import sys
 
 app = Flask(__name__)
 
@@ -15,6 +16,7 @@ def env_show():
     result = []
     for k, v in os.environ.items():
         result.append({k: v})
+    result.append({"python_interpreter": sys.executable})
     return json.dumps(result)
 
 if __name__ == '__main__':
