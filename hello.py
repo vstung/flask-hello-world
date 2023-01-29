@@ -16,8 +16,11 @@ def env_show():
     result = []
     for k, v in os.environ.items():
         result.append({k: v})
-    result.append({"python_interpreter": sys.executable})
     return json.dumps(result)
+
+@app.route('/pythonver')
+def python_ver_show():
+    return json.dumps({"python_version": sys.version})
 
 if __name__ == '__main__':
     app.run(debug=True)
